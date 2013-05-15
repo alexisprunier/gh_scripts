@@ -13,7 +13,7 @@ import org.jsoup.parser.Parser;
 import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
-public class Facebook {
+public class Twitter {
 	
 	private static String titre;
 	private static String description;
@@ -28,7 +28,7 @@ public class Facebook {
 	static private String xml = null;
 	static private Document xmlDoc = null;
 
-	public Facebook(String fb_page, String origine){
+	public Twitter(String fb_page, String origine){
 		this.titre = null;
 		this.description = null;
 		this.date = new Date(System.currentTimeMillis());
@@ -56,9 +56,9 @@ public class Facebook {
 		try {
 			  Class.forName("com.mysql.jdbc.Driver").newInstance();
 			  conn = DriverManager.getConnection(url+dbName,userName,password);
-			  System.out.println("Connected to the database for FB");
+			  System.out.println("Connected to the database for TWITTER");
 			  statement = conn.createStatement();
-			  ResultSet rs = statement.executeQuery("SELECT id FROM GeekHub_facebook");
+			  ResultSet rs = statement.executeQuery("SELECT id FROM GeekHub_twitter");
 			  if(rs.last()){
 				  id=rs.getInt("id")+1;
 			  }
@@ -76,7 +76,7 @@ public class Facebook {
 			lien = xmlDoc.select("link").set(i+1, null).text();
 
 			try {
-				statement.executeUpdate("INSERT INTO GeekHub_facebook VALUES (NULL,\""+titre+"\",\""+origine+"\", \""+description+"\", \""+lien+"\", \""+sdf.format(date)+"\");");
+				statement.executeUpdate("INSERT INTO GeekHub_twitter VALUES (NULL,\""+titre+"\",\""+origine+"\", \""+description+"\", \""+lien+"\", \""+sdf.format(date)+"\");");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
