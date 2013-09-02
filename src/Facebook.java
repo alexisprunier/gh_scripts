@@ -23,12 +23,15 @@ public class Facebook {
 	private static String origine;
 	private static String lien;
 	private static String page;
+	private static String bdd;
+	private static String user;
+	private static String pass;
 	
 	//Variable Jsoup
 	static private String xml = null;
 	static private Document xmlDoc = null;
 
-	public Facebook(String fb_page, String origine){
+	public Facebook(String fb_page, String origine, String nom_bdd, String user_bdd, String pass_bdd){
 		this.titre = null;
 		this.description = null;
 		this.date = new Date(System.currentTimeMillis());
@@ -37,6 +40,9 @@ public class Facebook {
 		this.origine = origine;
 		this.lien = null;
 		this.page = fb_page;
+		this.bdd = nom_bdd;
+		this.user = user_bdd;
+		this.pass = pass_bdd;
 	}
 	
 	public void getInfo() throws IOException {
@@ -47,15 +53,12 @@ public class Facebook {
 		// Connection BDD
 		
 		String url = "jdbc:mysql://localhost:3306/";
-		String dbName = "GeekHubDatabase";
-		String userName = "root"; 
-		String password = "ghct2lb";
 		Connection conn = null;
 		Statement statement = null;
 		int id = 0;
 		try {
 			  Class.forName("com.mysql.jdbc.Driver").newInstance();
-			  conn = DriverManager.getConnection(url+dbName,userName,password);
+			  conn = DriverManager.getConnection(url+bdd,user,pass);
 			  System.out.println("Connected to the database for FB");
 			  statement = conn.createStatement();
 			  ResultSet rs = statement.executeQuery("SELECT id FROM GeekHub_facebook");
