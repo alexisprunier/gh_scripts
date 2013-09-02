@@ -68,7 +68,7 @@ public class Hardware {
 			//Ajout dans la base de données
 			
 			try {
-				statement.executeUpdate("INSERT INTO GeekHub_article VALUES (NULL,\""+titre+"\",\""+origine+"\", \""+lien+"\", \""+sdf.format(date)+"\", \""+image+"\");");
+				statement.executeUpdate("INSERT INTO GeekHub_article VALUES (NULL,\""+titre+"\",\""+origine+"\", \""+lien+"\", \""+sdf.format(date)+"\", \""+image+"\", 0, 0);");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
