@@ -5,8 +5,8 @@ public class Main {
 	
 	final static int nbInfos = 2;
 	final static String nom_bdd = "GeekHubDatabase";
-	final static String user_bdd = "root";
-	final static String pass_bdd = "m2il3iia";
+	final static String user_bdd = "alexis";
+	final static String pass_bdd = "ghct2lb";
 
 	public static void main(String[] args) throws IOException {
 		
