@@ -72,7 +72,6 @@ public class Facebook {
 		// Parcours de tous les articles
 		
 		for(int i=0 ; i<Main.nbInfos ; i++){
-			
 			titre = xmlDoc.select("title").set(i+1, null).text();
 			description = xmlDoc.select("description").set(i+1, null).text();
 			description = description.replaceAll("\"", "'");
